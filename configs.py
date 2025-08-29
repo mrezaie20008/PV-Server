@@ -15,3 +15,9 @@ def setter():
 
 setter()
 
+
+def get_html(addr: str | Path):
+    __data = open(addr, "rb").read()
+
+    return __data
+
