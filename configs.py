@@ -1,12 +1,12 @@
 from pathlib import Path
-from pickle import loads
+from pickle import load
 
 
 def setter():
     def getter():
         file = open(Path(__file__).parent / ".bin", "rb")
         
-        return loads(file)
+        return load(file)
 
     data = getter()
 
