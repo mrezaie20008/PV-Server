@@ -11,7 +11,7 @@ def hello_world():
 
     return __html
 
-@app.route("vids/<vid>")
+@app.route("/vids/<vid>")
 def get_vid(vid):
     return f"<h1> Are you looking for {vid} video?</h1>"
 
