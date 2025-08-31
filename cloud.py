@@ -49,8 +49,5 @@ class Storage:
 
 
 cl = Storage("working_etc@outlook.com", "Mohammad@99")
-cl.login()
-
-print(cl.whoami())
 
 

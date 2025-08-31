@@ -3,3 +3,4 @@ venv/**
 PV-Download/**
 __pycache__/**
 Videos/**
+temp
