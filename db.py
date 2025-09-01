@@ -94,9 +94,3 @@ class DB:
     def __del__(self):
         self.db.close()
 
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> fb146ab35959fb55836b8a443d0e9f79ab2dc139
-
