@@ -1,6 +1,7 @@
 from pathlib import Path
 from pickle import load
 from os import listdir
+from flask import jsonify
 from db import DB
 
 # Configurations
@@ -20,9 +21,6 @@ configure()
 
 
 # Functions
-def change_header():
-    pass
-
 def get_html(addr: str | Path):
     __data = open(addr, "rb").read()
 
