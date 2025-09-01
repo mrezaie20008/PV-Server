@@ -98,7 +98,3 @@ class Storage:
             exit()
 
 
-cl = Storage("working_etc@outlook.com", "Mohammad@99")
-cl.login()
-
-cl.download("db.py", "tdb.py")
