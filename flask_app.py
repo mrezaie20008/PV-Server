@@ -26,7 +26,7 @@ def welcome():
         return Response("HI", mimetype="text/plain"), 200
 
     else:
-        return Response(f"You are accessing from {request.remote_addr} IP address.", mimetype="text/plain"), 200
+        return Response(f"Hi There,\nThis is an API which we put videos on it for public use.", mimetype="text/plain"), 200
 
 
 @app.route("/vids")
