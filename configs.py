@@ -16,15 +16,6 @@ def configure():
     for k, v in data.items():
         globals()[k] = v
 
-    # Other Configurations
-    def database():
-        db = DB(DB_FILE)
-        
-        for t in TABLES:
-            print(t)
-
-    database()
-
 configure()
 
 
