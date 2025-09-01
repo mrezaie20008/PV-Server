@@ -1,13 +1,12 @@
 from flask import (
     Flask,
-    render_template,
     jsonify,
     abort,
     request,
+    Response,
 )
 from pathlib import Path
 from configs import *
-from markupsafe import escape
 
 
 # App Configurations
@@ -17,17 +16,17 @@ app = Flask(__name__)
 # Error Pages
 @app.errorhandler(404)
 def page_not_found(error):
-    return jsonify("NOT_FOUND"), 404
+    return Response("NOT_FOUND", minetype="text/plain"), 404
 
 
 # Routes / Pages
 @app.route('/', methods=["GET", "POST"])
 def welcome():
     if request.method == "POST":
-        return "HI"
+        return Response("HI", mimetype="text/plain"), 200
 
     else:
-        return "GET-HI"
+        return Response("GET - HI", mimetype="text/plain"), 200
 
 
 @app.route("/vids")
