@@ -94,6 +94,5 @@ class DB:
     def __del__(self):
         self.db.close()
 
-test = DB(Path(__file__).parent / "test.db", "history")
-
+        
 
