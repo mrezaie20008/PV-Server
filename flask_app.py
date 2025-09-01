@@ -17,7 +17,7 @@ app = Flask(__name__)
 # Error Pages
 @app.errorhandler(404)
 def page_not_found(error):
-    return "NOT_FOUND", 404
+    return jsonify("NOT_FOUND"), 404
 
 
 # Routes / Pages
