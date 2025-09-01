@@ -18,6 +18,9 @@ setter()
 
 
 # Functions
+def change_header():
+    pass
+
 def get_html(addr: str | Path):
     __data = open(addr, "rb").read()
 
