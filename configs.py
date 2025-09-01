@@ -1,20 +1,31 @@
 from pathlib import Path
 from pickle import load
 from os import listdir
+from db import DB
 
-
-def setter():
-    def getter():
+# Configurations
+def configure():
+    def get_variables():
         file = open(Path(__file__).parent / ".bin", "rb")
         
         return load(file)
 
-    data = getter()
+    # Settings Section
+    data = get_variables()
 
     for k, v in data.items():
         globals()[k] = v
 
-setter()
+    # Other Configurations
+    def database():
+        db = DB(DB_FILE)
+        
+        for t in TABLES:
+            print(t)
+
+    database()
+
+configure()
 
 
 # Functions

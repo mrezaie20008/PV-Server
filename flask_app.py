@@ -2,7 +2,8 @@ from flask import (
     Flask,
     render_template,
     jsonify,
-    abort
+    abort,
+    request,
 )
 from pathlib import Path
 from configs import *
@@ -20,9 +21,13 @@ def page_not_found(error):
 
 
 # Routes / Pages
-@app.route('/')
-def hello_world():
-    pass
+@app.route('/', methods=["GET", "POST"])
+def welcome():
+    if request.method == "POST":
+        return "HI"
+
+    else:
+        return "GET-HI"
 
 
 @app.route("/vids")
