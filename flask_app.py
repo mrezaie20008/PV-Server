@@ -16,7 +16,7 @@ app = Flask(__name__)
 # Error Pages
 @app.errorhandler(404)
 def page_not_found(error):
-    return Response("NOT_FOUND", minetype="text/plain"), 404
+    return Response("NOT_FOUND", mimetype="text/plain"), 404
 
 
 # Routes / Pages
@@ -26,12 +26,12 @@ def welcome():
         return Response("HI", mimetype="text/plain"), 200
 
     else:
-        return Response("GET - HI", mimetype="text/plain"), 200
+        return Response(f"You are accessing from {request.remote_addr} IP address.", mimetype="text/plain"), 200
 
 
 @app.route("/vids")
 def show_vids():
-    return ", ".join(list_vids())
+    return jsonify(list_vids())
 
 
 @app.get("/vids/<vid>")
