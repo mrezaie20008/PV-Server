@@ -13,7 +13,6 @@ def configure():
 
     # Settings Section
     data = get_variables()
-    data["SECRET_KEY"] = get_env("SECRET_KEY")
 
     for k, v in data.items():
         globals()[k] = v
