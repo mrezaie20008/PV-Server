@@ -42,6 +42,7 @@ def build():
     DB_DIR = HOME_DIR / "DBs"
     VID_DIR = HOME_DIR / "Videos"
     TEMP_DIR = HOME_DIR / ".temp"
+    SECRET_KEY = "TW9oYW1tYWQ6UmV6YWllOjIwMDg6TW9oYW1tYWRAOTk="
     
     DB_FILE = DB_DIR / "main.db"
     TABLES = {
@@ -59,6 +60,7 @@ def build():
                 "E-FK": "FOREIGN KEY (User) REFERENCES users(ID)"
                 },
     }
+
     
     # Making the folders
     for f in [fo for fn, fo in locals().items() if (fn.endswith("_DIR") and fn.upper()) and not fn.startswith("_")]:
