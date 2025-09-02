@@ -1,6 +1,6 @@
 from pathlib import Path
 from pickle import load
-from os import listdir
+from os import listdir, get_env
 from flask import jsonify
 from db import DB
 
@@ -13,6 +13,7 @@ def configure():
 
     # Settings Section
     data = get_variables()
+    data["SECRET_KEY"] = get_env("SECRET_KEY")
 
     for k, v in data.items():
         globals()[k] = v
