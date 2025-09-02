@@ -18,15 +18,30 @@ app = Flask(__name__)
 def page_not_found(error):
     return Response("NOT_FOUND", mimetype="text/plain"), 404
 
+@app.errorhandler(403)
+def not_allowed(error):
+    return Response("NOT_ALLOWED", mimetype="text/plain"), 403
+
 
 # Routes / Pages
 @app.route('/', methods=["GET", "POST"])
 def welcome():
     if request.method == "POST":
-        return Response("HI", mimetype="text/plain"), 200
+
+        if not "authToken" in request.cookies:
+            abort(403)
+
+        user = verify_token(request.cookies.get("authToken"))
+
+        if not user:
+            abort(403)
+
+        __response = f"""HI, {user[0][1]}!\n/vids - For checking the stock of videos we have.\nThanks!"""
+
+        return Response(__response, mimetype="text/plain"), 200
 
     else:
-        return Response(f"Hi There,\nThis is an API which we put videos on it for public use.", mimetype="text/plain"), 200
+        abort(403)
 
 
 @app.route("/vids")

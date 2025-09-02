@@ -1,6 +1,6 @@
 from pathlib import Path
 from pickle import load
-from os import listdir, get_env
+from os import listdir
 from flask import jsonify
 from db import DB
 
@@ -16,11 +16,20 @@ def configure():
 
     for k, v in data.items():
         globals()[k] = v
+    
+    globals()['db'] =  DB(DB_FILE)
 
 configure()
 
 
 # Functions
+def verify_token(token: str):
+    db.table = "users"
+    user = db.find("Auth", token, "ID", "username")
+
+    return user
+
+
 def get_html(addr: str | Path):
     __data = open(addr, "rb").read()
 

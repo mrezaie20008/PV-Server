@@ -45,14 +45,19 @@ def build():
     SECRET_KEY = "TW9oYW1tYWQ6UmV6YWllOjIwMDg6TW9oYW1tYWRAOTk="
     
     DB_FILE = DB_DIR / "main.db"
-    TABLES = {
-            "users": {
+    
+    TABLES_NAMES = [
+        "users",
+        "history"
+    ]
+    TABLES_CONFIG = {
+            TABLES_NAMES[0]: {
                 "ID": "INTEGER PRIMARY KEY AUTOINCREMENT",
                 "username": "CHAR(128) NOT NULL",
                 "password": "CHAR(255) NOT NULL",
                 "Auth": "CHAR(255) NOT NULL"
                 },
-            "history": {
+            TABLES_NAMES[1]: {
                 "ID": "INTEGER PRIMARY KEY AUTOINCREMENT",
                 "Date": "CHAR(16) DEFAULT CURRENT_DATE",
                 "Time": "CHAR(16) DEFAULT CURRENT_TIME",
@@ -72,7 +77,7 @@ def build():
     dump(_objs, _file)
 
     # Building DataBase
-    build_db(TABLES, DB_FILE)
+    build_db(TABLES_CONFIG, DB_FILE)
     
     print("\033[94m="*20)
     print("\033[92m\033[01mBUILDING IS DONE!\033[00m")
