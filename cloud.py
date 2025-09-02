@@ -13,7 +13,7 @@ class Storage:
         # Instances
         self.cloud = Mega() 
         self.logger = None
-        self.locker = Fernet(SECRET_KEY)
+        self.locker = Fernet(SECRET_KEY.encode())
 
         # Credentials
         self.email = email
