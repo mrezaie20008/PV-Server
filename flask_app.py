@@ -7,6 +7,7 @@ from flask import (
 )
 from pathlib import Path
 from configs import *
+from json import loads
 
 
 # App Configurations
@@ -27,16 +28,19 @@ def not_allowed(error):
 @app.route('/', methods=["GET", "POST"])
 def welcome():
     if request.method == "POST":
+        __data = loads(request.data.decode())
 
-        if not "authToken" in request.cookies:
+        if "password" not in __data.keys() or "username" not in __data.keys():
             abort(403)
-
-        user = verify_token(request.cookies.get("authToken"))
+        
+        __hash = salted_hash(__data["username"], __data['password'])
+        
+        user = verify_token(__hash)
 
         if not user:
             abort(403)
 
-        __response = f"""HI, {user[0][1]}!\n/vids - For checking the stock of videos we have.\nThanks!"""
+        __response = f"Welcome {user[0][1]}!"
 
         return Response(__response, mimetype="text/plain"), 200
 

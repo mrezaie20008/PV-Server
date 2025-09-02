@@ -3,6 +3,8 @@ from pickle import load
 from os import listdir
 from flask import jsonify
 from db import DB
+from hashlib import md5
+
 
 # Configurations
 def configure():
@@ -29,6 +31,8 @@ def verify_token(token: str):
 
     return user
 
+def salted_hash(_hash: str, _salt: str):
+    return md5((_hash+":"+_salt).encode()).hexdigest()
 
 def get_html(addr: str | Path):
     __data = open(addr, "rb").read()
