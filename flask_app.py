@@ -41,7 +41,7 @@ def welcome():
         if not user:
             abort(403)
 
-        __response = f"Welcome {user[0][1]}!"
+        __response = f"WELCOME {user}!"
 
         return Response(__response, mimetype="text/plain"), 200
 

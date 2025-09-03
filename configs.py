@@ -42,5 +42,3 @@ def list_vids():
     return __vids
 
 
-print(list_vids())
-
