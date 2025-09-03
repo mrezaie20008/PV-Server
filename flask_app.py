@@ -41,7 +41,7 @@ def welcome():
         if not user:
             abort(403)
 
-        __response = f"WELCOME {user}!"
+        __response = __hash
 
         return Response(__response, mimetype="text/plain"), 200
 
@@ -51,10 +51,14 @@ def welcome():
 
 @app.route("/vids")
 def show_vids():
+    __auth = request.cookies.get("authToken")
+
+    print(__auth)
+
     return jsonify(list_vids())
 
 
-@app.get("/vids/<vid>")
+@app.get("/vids/<vid>/<int:sn>")
 def get_vid(vid):
     if not vid in list_vids():
         abort(404)
