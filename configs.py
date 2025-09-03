@@ -1,7 +1,6 @@
 from pathlib import Path
 from pickle import load
 from os import listdir
-from flask import jsonify
 from db import DB
 from hashlib import md5
 
@@ -31,17 +30,17 @@ def verify_token(token: str):
 
     return user
 
+
 def salted_hash(_hash: str, _salt: str):
     return md5((_hash+":"+_salt).encode()).hexdigest()
 
-def get_html(addr: str | Path):
-    __data = open(addr, "rb").read()
 
-    return __data
-
-def list_vids(vids_pth: Path = VID_DIR):
-    __vids = [v for v in listdir(vids_pth) if v.split(".")[-1] == "mp4"]
+def list_vids():
+    db.table = "videos"
+    __vids = {vid[0]:list(vid[1:]) for vid in db.select_all()}
 
     return __vids
 
+
+print(list_vids())
 

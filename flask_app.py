@@ -1,3 +1,4 @@
+# TODO: Make the vids url the functional one, which brings up the real videos
 from flask import (
     Flask,
     jsonify,

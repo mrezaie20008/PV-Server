@@ -49,14 +49,8 @@ class DB:
 
 
 
-    def select_table(self, table: str, *columns: list):
-        _columns = "*"
-
-        if columns:
-            _columns = ", ".join(columns)
-
-        _query = f"SELECT {_columns} FROM {table}"
-        
+    def select_all(self):
+        _query = f"SELECT * FROM {self.table}"
         data = self.execute(_query)
 
         return data
